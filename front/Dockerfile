@@ -31,8 +31,8 @@ RUN echo 'server { \
         proxy_set_header X-Forwarded-Proto $scheme; \
     } \
     \
-    # Proxy /api/forecast/* to backend:4000/forecast/* (strip /api prefix) \
-    location /api/forecast/ { \
+    # Proxy /api/forecast to backend:4000/forecast (strip /api prefix) \
+    location /api/forecast { \
         rewrite ^/api/(.*) /$1 break; \
         proxy_pass http://backend:4000; \
         proxy_http_version 1.1; \
@@ -42,8 +42,8 @@ RUN echo 'server { \
         proxy_set_header X-Forwarded-Proto $scheme; \
     } \
     \
-    # Proxy /api/insights/* to backend:4000/insights/* (strip /api prefix) \
-    location /api/insights/ { \
+    # Proxy /api/insights to backend:4000/insights (strip /api prefix) \
+    location /api/insights { \
         rewrite ^/api/(.*) /$1 break; \
         proxy_pass http://backend:4000; \
         proxy_http_version 1.1; \
