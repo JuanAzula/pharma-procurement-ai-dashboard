@@ -1,271 +1,544 @@
-# TED API Dashboard
+# TED API Dashboard 🚀
 
-An interactive dashboard for tracking pharmaceutical procurement activities across Europe using the TED (Tenders Electronic Daily) API.
+> **AI-Powered Pharmaceutical Procurement Analytics Platform**
+
+An intelligent dashboard for tracking and forecasting pharmaceutical procurement activities across Europe using the TED (Tenders Electronic Daily) API, enhanced with TensorFlow-based predictions and automated insights.
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [✨ Key Features](#-key-features)
+- [🤖 AI Capabilities](#-ai-capabilities)
+- [🚀 Quick Start](#-quick-start)
+- [💻 Technology Stack](#-technology-stack)
+- [📊 Project Structure](#-project-structure)
+- [🔧 Configuration](#-configuration)
+- [📖 Usage Guide](#-usage-guide)
+- [🐳 Docker Deployment](#-docker-deployment)
+- [🛠️ Development](#️-development)
+- [📈 Future Roadmap](#-future-roadmap)
+
+---
 
 ## Overview
 
-This dashboard provides comprehensive insights into public procurement of three pharmaceutical products (Abiraterone, Eplerenone, and Pomalidomide) across Germany, Hungary, Italy, and Poland. It leverages the EU's official TED API to fetch real-time contract award data and presents it through an intuitive, filterable interface with rich visualizations.
+This dashboard provides comprehensive insights into public procurement of **pharmaceutical products** (Abiraterone, Eplerenone, Pomalidomide, and Immunosuppressants) across **Germany, Hungary, Italy, and Poland**. 
 
-## Features
+It leverages the EU's official **TED API** to fetch real-time contract award data and presents it through an intuitive, filterable interface with rich visualizations and **AI-powered forecasting and insights**.
 
-### Live Data Integration
-- **On-demand data fetching** from the TED API
-- Focus on **contract award notices** (realized purchases)
-- Real-time filtering and search capabilities
+### Business Value
+
+- 📊 **Track procurement trends** over time and across countries
+- 💰 **Analyze contract values** and award patterns
+- 🔮 **Forecast future activity** using machine learning
+- 🎯 **Identify anomalies** and market opportunities
+- 📈 **Compare markets** with EU-wide benchmarking
+
+---
+
+## ✨ Key Features
+
+### 🔍 Live Data Integration
+- **Real-time data fetching** from TED API v3 (no API key required)
+- Focus on **contract award notices** (realized purchases, not just calls for tender)
 - Automatic data transformation and normalization
+- Smart pagination and caching
 
-### Advanced Filtering
-- **Date Range**: Filter contracts by award date
-- **Countries**: Multi-select for Germany, Hungary, Italy, and Poland
-- **CPV Codes**: Filter by pharmaceutical product categories
-- **Supplier**: Search by winning supplier name
-- **Contract Value**: Filter by minimum and maximum contract values
+### 🎛️ Advanced Filtering
+- **Date Range**: Filter by award date with custom start/end dates
+- **Countries**: Multi-select (DE, HU, IT, PL)
+- **CPV Codes**: Pharmaceutical-specific product categories
+- **Supplier Search**: Find contracts by winning supplier name
+- **Value Range**: Min/max contract value filters
+- **Clear All**: One-click filter reset
 
-### Interactive Visualizations
-1. **Timeline Chart**: Track procurement trends over time by country
-2. **Country Comparison**: Compare number of contracts and average values across countries
-3. **Value Distribution**: Scatter plot showing contract values over time with country segmentation
+### 📊 Interactive Visualizations
+1. **Timeline Chart** - Track procurement trends over time by country
+2. **Country Comparison** - Compare contract counts and average values
+3. **Value Distribution** - Scatter plot of contract values over time with country segmentation
+4. **AI Forecast** ⭐ - TensorFlow-based predictions (see [AI Capabilities](#-ai-capabilities))
+5. **AI Insights** ⭐ - Automated intelligence and anomaly detection
 
-### Data Table & Details
-- Comprehensive table view with key contract information
-- Click any row to view detailed notice information
-- Pagination support for large datasets
-- Links to original TED notice pages
+### 📋 Data Management
+- **Comprehensive table view** with sortable columns
+- **Pagination** for large datasets
+- **Detailed modal view** - Click any row for full notice information
+- **Direct links** to original TED notices
+- **Responsive design** - Works on desktop, tablet, and mobile
 
-### Key Metrics Dashboard
-- Total number of contracts
-- Total contract value
-- Average contract value
-- Number of active countries
+### 🌍 Multi-Language Support
+- English, Spanish, and Dutch interface translations
+- Automatic language detection
+- Cached translations for performance
 
-## Technology Stack
+---
 
-- **Frontend Framework**: React 18 with TypeScript
-- **Build Tool**: Vite
-- **State Management**: Redux Toolkit with RTK Query
-- **UI Components**: Shadcn UI (Radix UI primitives + Tailwind CSS)
-- **Data Visualization**: Recharts
-- **Routing**: React Router v6
-- **Date Handling**: date-fns
-- **Styling**: Tailwind CSS
+## 🤖 AI Capabilities
 
-## Installation
+### 📈 **AI-Powered Forecasting**
 
-### Prerequisites
+Built with **TensorFlow.js**, the forecast engine provides intelligent predictions of future procurement activity.
 
-- Node.js 16+ (recommended: 18 or 20)
-- npm or yarn package manager
+**Features:**
+- ✅ **Neural network training** on historical procurement data
+- ✅ **Configurable forecast horizon** (1-24 months)
+- ✅ **Automatic gap filling** - Intelligently fills missing months
+- ✅ **Staleness detection** - Warns when data is >6 months old
+- ✅ **Dual-timeline view** - Overlays historical actuals with forecast predictions
+- ✅ **Confidence indicators** - Visual freshness warnings
 
-### Setup Instructions
+**How it works:**
+1. Aggregates historical contract awards by month
+2. Trains a lightweight sequential neural network
+3. Generates predictions for future months
+4. Provides metadata (training samples, data freshness, gaps)
 
-1. **Clone or extract the project**
-   ```bash
-   cd ted-api
-   ```
+**Access:** Navigate to the **Forecast** tab in visualizations
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+# Test the forecaster from CLI
+cd backend
+npm run sample
+```
 
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+### 🎯 **AI Insight Spotlight**
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173` (or the URL shown in your terminal)
+Automated intelligence that detects patterns, anomalies, and provides macro-economic context.
 
-## Usage
+**Features:**
+- ✅ **Spike detection** - Identifies sudden increases (>50%) in spending
+- ✅ **Trend analysis** - Detects contractions and growth patterns
+- ✅ **Country surprises** - Highlights unexpected market dominance
+- ✅ **Macro alignment** - Contextualizes with **live EU-wide procurement data**
+- ✅ **Narrative insights** - Human-readable highlights and cards
+- ✅ **Multi-language** - Insights translated to user's language
 
-### Initial View
-When you first load the dashboard, it automatically fetches contract award notices from the past 2 years for all target countries and pharmaceutical products.
+**How it works:**
+1. Analyzes historical patterns for anomalies
+2. Aggregates by country to find surprises
+3. Fetches **live macro data** from TED API (all EU pharma procurement)
+4. Generates contextual insight cards
+5. Translates insights for accessibility
 
-### Filtering Data
-1. Use the **Filter Panel** on the left sidebar to refine your search
-2. Select date ranges, countries, CPV codes, or enter supplier names
-3. Set minimum/maximum contract values
-4. The dashboard updates automatically as you adjust filters
-5. Click "Clear All Filters" to reset to default view
+**Access:** Navigate to the **AI Insights** tab in visualizations
 
-### Viewing Details
-- Click any row in the data table to open a detailed view
-- The detail dialog shows all available information including CPV codes, buyer details, and links to the original TED notice
+### 🧠 **Backend AI Architecture**
 
-### Exploring Visualizations
-- Switch between three visualization tabs:
-  - **Timeline**: See how procurement activity changes over time
-  - **Country Comparison**: Compare procurement patterns across countries
-  - **Value Distribution**: Analyze contract values and their distribution
+**Tech Stack:**
+- **TensorFlow.js Node** (`@tensorflow/tfjs-node`) - Neural network training
+- **Express** - REST API
+- **TypeScript** - Type-safe implementation
+- **Redis** - Translation caching
 
-## Project Structure
+**API Endpoints:**
+- `POST /forecast` - Generate predictions
+- `POST /insights` - Generate automated insights
+- `POST /translate` - Translation with caching
+- `GET /health` - Health check
+
+---
+
+## 🚀 Quick Start
+
+Choose your deployment method:
+
+### Option 1: Local Development (Recommended for Getting Started) 💻
+
+The simplest way to run the application on your machine - no Docker required!
+
+#### Prerequisites
+
+- **Node.js** 16+ (recommended: 18 or 20)
+- **npm** or yarn
+- **Modern browser** (Chrome, Firefox, Safari, Edge)
+
+> **Note:** Redis is optional for local development. The app will work without it; translations just won't be cached.
+
+#### Installation Steps
+
+**1️⃣ Install Dependencies**
+
+```bash
+# Backend (AI services)
+cd backend
+npm install
+
+# Frontend (dashboard)
+cd ../front
+npm install
+```
+
+**2️⃣ Start Backend (in first terminal)**
+
+```bash
+cd backend
+npm run dev
+```
+✅ Backend starts on **http://localhost:4000**
+
+**3️⃣ Start Frontend (in second terminal)**
+
+```bash
+cd front
+npm run dev
+```
+✅ Frontend starts on **http://localhost:5173**
+
+**4️⃣ Open Dashboard**
+
+Navigate to **http://localhost:5173** in your browser.
+
+🎉 **That's it!** The dashboard will automatically fetch real data from the TED API and connect to your local backend for AI features.
+
+---
+
+### Option 2: Docker Deployment 🐳
+
+For production-like deployment with all services containerized.
+
+```bash
+# Build and start all services (frontend, backend, Redis)
+docker compose up --build
+
+# Access the application
+# Frontend: http://localhost
+# Backend API: http://localhost:4000
+```
+
+See **[DOCKER.md](../DOCKER.md)** for detailed Docker deployment instructions.
+
+---
+
+## 💻 Technology Stack
+
+### Frontend
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Redux Toolkit** - State management
+- **RTK Query** - Data fetching and caching
+- **Shadcn UI** - Beautiful, accessible components (Radix UI + Tailwind)
+- **Recharts** - Data visualizations
+- **React Router v6** - Navigation
+- **Vite** - Build tool
+- **i18next** - Internationalization
+- **Tailwind CSS** - Styling
+
+### Backend
+- **Express** - REST API framework
+- **TypeScript** - Type safety
+- **TensorFlow.js Node** - Machine learning
+- **Axios** - HTTP client
+- **Redis** - Caching layer
+- **Zod** - Runtime validation
+- **google-translate-api-x** - Translation service
+
+### DevOps
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container orchestration
+- **Playwright** - E2E testing
+- **Jest** - Unit testing
+
+---
+
+## 📊 Project Structure
 
 ```
 ted-api/
-├── src/
-│   ├── components/
-│   │   ├── ui/                    # Shadcn UI components
-│   │   ├── Visualizations/        # Chart components
-│   │   ├── ErrorBoundary.tsx      # Error handling component
-│   │   ├── FilterPanel.tsx        # Filter controls
-│   │   ├── Layout.tsx             # Main layout wrapper
-│   │   ├── NoticeDetailDialog.tsx # Detail view modal
-│   │   └── NoticesTable.tsx       # Data table component
-│   ├── config/
-│   │   └── ted.ts                 # TED API configuration & constants
-│   ├── lib/
-│   │   └── utils.ts               # Utility functions
-│   ├── pages/
-│   │   └── Dashboard.tsx          # Main dashboard page
-│   ├── services/
-│   │   └── tedApi.ts              # RTK Query API service
-│   ├── store/
-│   │   ├── filterSlice.ts         # Filter state management
-│   │   ├── hooks.ts               # Typed Redux hooks
-│   │   └── index.ts               # Store configuration
-│   ├── types/
-│   │   └── ted.ts                 # TypeScript type definitions
-│   ├── App.tsx                    # Root application component
-│   ├── main.tsx                   # Application entry point
-│   └── index.css                  # Global styles
-├── public/                        # Static assets
-├── index.html                     # HTML template
-├── package.json                   # Dependencies and scripts
-├── tsconfig.json                  # TypeScript configuration
-├── tailwind.config.js             # Tailwind CSS configuration
-└── vite.config.ts                 # Vite build configuration
+├── backend/                      # AI & API Services
+│   ├── src/
+│   │   ├── routes/
+│   │   │   ├── forecast.ts       # Forecast endpoint
+│   │   │   ├── insights.ts       # Insights endpoint
+│   │   │   └── translation.ts    # Translation endpoint
+│   │   ├── services/
+│   │   │   ├── forecastService.ts        # TensorFlow forecasting
+│   │   │   ├── insightService.ts         # Anomaly detection
+│   │   │   ├── procurementMacroService.ts # EU-wide data
+│   │   │   └── translationService.ts     # i18n with caching
+│   │   └── server.ts             # Express app
+│   ├── Dockerfile
+│   └── package.json
+│
+├── front/                        # React Dashboard
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Visualizations/
+│   │   │   │   ├── TimelineChart.tsx
+│   │   │   │   ├── CountryComparison.tsx
+│   │   │   │   ├── ValueDistribution.tsx
+│   │   │   │   ├── Forecast.tsx          # AI forecast UI
+│   │   │   │   └── InsightSpotlight.tsx  # AI insights UI
+│   │   │   ├── FilterPanel.tsx
+│   │   │   ├── NoticesTable.tsx
+│   │   │   └── NoticeDetailDialog.tsx
+│   │   ├── pages/
+│   │   │   └── Dashboard.tsx
+│   │   ├── services/
+│   │   │   ├── tedApi.ts         # TED API client
+│   │   │   ├── forecastApi.ts    # Forecast client
+│   │   │   └── insightApi.ts     # Insights client
+│   │   ├── store/
+│   │   │   ├── filterSlice.ts    # Redux filters
+│   │   │   └── index.ts          # Store config
+│   │   └── types/
+│   │       └── ted.ts            # TypeScript types
+│   ├── e2e/                      # Playwright tests
+│   ├── Dockerfile
+│   └── package.json
+│
+├── docker-compose.yml            # Full stack deployment
+└── DOCKER.md                     # Docker documentation
 ```
 
-## API Integration
+---
 
-### TED API
-This dashboard uses the official TED (Tenders Electronic Daily) API v3:
-- **Base URL**: `https://api.ted.europa.eu/v3`
-- **No API key required** for read-only access
-- **Documentation**: https://docs.ted.europa.eu/api/latest/
+## 🔧 Configuration
 
-### Data Fetching Strategy
-- Uses RTK Query for efficient caching and automatic refetching
-- Focuses on contract award notices (notice type 7)
-- Filters by CPV codes relevant to pharmaceutical products
-- Searches for specific drug keywords (Abiraterone, Eplerenone, Pomalidomide)
+### Environment Variables
 
-### CPV Codes Used
-- `33600000` - Pharmaceutical products (general)
-- `33651600` - Antineoplastic agents (Abiraterone)
-- `33631600` - Cardiovascular system drugs (Eplerenone)
-- `33651700` - Immunosuppressants (Pomalidomide)
-- `33651000` - Pharmaceutical preparations (general)
+#### Frontend (`front/.env`)
 
-## Assumptions & Design Decisions
+```env
+# Backend API URLs (optional)
+VITE_FORECAST_API_URL=http://localhost:4000
+VITE_INSIGHTS_API_URL=http://localhost:4000
+```
 
-### 1. Data Assumptions
-- **Notice Type**: Focused on contract award notices (type 7) as these represent actual completed procurements with real contract values and winning suppliers
-- **Date Range**: Default 2-year lookback period for meaningful trend analysis
-- **Data Quality**: Some notices may have missing fields (supplier, value, etc.) - these are handled gracefully with "N/A" displays
-- **Currency**: Contract values are assumed to be in EUR for consistency
+#### Backend (`backend/.env`)
 
-### 2. Search Strategy
-- Combined keyword search (drug names) with CPV code filtering for maximum relevance
-- Multi-country filtering allows comparison across markets
-- Pagination handles large result sets efficiently
+```env
+# Server
+PORT=4000
 
-### 3. UI/UX Decisions
-- **Responsive Design**: Works on desktop and tablet (mobile view simplified)
-- **Loading States**: Skeleton screens prevent layout shifts during data fetching
-- **Error Handling**: Graceful degradation with error boundaries and toast notifications
-- **Color Coding**: Consistent colors per country across all visualizations
+# Redis (for translation caching)
+REDIS_URL=redis://localhost:6379
 
-### 4. Performance Optimizations
-- RTK Query provides automatic caching and deduplication
-- Memoized calculations for metrics and chart data
-- Virtualized rendering for large datasets (table pagination)
+# Optional: Translation API
+# (Uses google-translate-api-x by default)
+```
 
-## Known Limitations & Future Enhancements
+### TED API Configuration
 
-### Current Limitations
-1. **API Rate Limits**: TED API may have rate limits (not documented) - implemented with retry logic
-2. **Data Completeness**: Not all TED notices have complete information (missing values, suppliers, etc.)
-3. **Search Accuracy**: Keyword-based search may miss relevant contracts or include false positives
-4. **Historical Data**: Limited to data available through TED API (may not include very old contracts)
+Located in `front/src/config/ted.ts`:
 
-### Planned Future Extensions
+```typescript
+// CPV Codes for pharmaceutical products
+export const PHARMACEUTICAL_CPV_CODES = [
+  '33600000',  // Pharmaceutical products
+  '33651600',  // Antineoplastic agents
+  '33631600',  // Cardiovascular drugs
+  '33651700',  // Immunosuppressants
+  '33651000',  // Pharmaceutical preparations
+];
 
-#### Data Management
-- **Export Functionality**: CSV/Excel export of filtered data
-- **Saved Filter Presets**: Save and load commonly used filter combinations
-- **Bulk Data Download**: Option to download larger datasets for offline analysis
+// Target countries
+export const DEFAULT_TARGET_COUNTRIES = ['DE', 'HU', 'IT', 'PL'];
+```
 
-#### Analytics & Insights
-- **Advanced Forecasting**: Predictive analytics for future procurement trends
-- **Price Analysis**: Track price changes over time for specific products
-- **Supplier Intelligence**: Analyze supplier market share and win rates
-- **Volume Estimation**: Estimate volumes based on contract values and market data
+---
 
-#### User Experience
-- **Email Alerts**: Notifications for new contracts matching specific criteria
-- **Dashboard Customization**: Personalize widget layout and default filters
-- **Multi-language Support**: Interface translation for EU languages
-- **Dark Mode**: Theme switching support
+## 📖 Usage Guide
 
-#### Technical Improvements
-- **Offline Mode**: Service worker for basic functionality without internet
-- **Real-time Updates**: WebSocket connection for live data streaming
-- **Advanced Search**: Full-text search with fuzzy matching
-- **API Caching Strategy**: More sophisticated caching with background refresh
+### Initial Dashboard View
 
-## Troubleshooting
+When you load the dashboard:
+- ✅ Automatically fetches **contract awards from the past 2 years**
+- ✅ Shows data for **all 4 target countries**
+- ✅ Displays **key metrics** at the top (total contracts, total value, etc.)
+- ✅ Renders **interactive visualizations**
+- ✅ Lists **notices in a sortable table**
 
-### Common Issues
+### Applying Filters
 
-1. **No data appearing**
-   - Check your internet connection
-   - Verify the TED API is accessible (try https://api.ted.europa.eu/v3/notices)
-   - Try clearing filters or adjusting the date range
+1. **Date Range** - Click date buttons to open calendar picker
+2. **Countries** - Click country badges (DE, IT, PL, HU) to toggle
+3. **Supplier** - Type supplier name in search box
+4. **Value Range** - Enter min/max contract values
+5. **Clear All** - Reset to default view
 
-2. **Slow loading**
-   - TED API can be slow during peak hours
-   - Try narrowing your search criteria (shorter date range, fewer countries)
+All visualizations and the table update **automatically** when filters change.
 
-3. **Build errors**
-   - Ensure you're using Node.js 16+
-   - Delete `node_modules` and `package-lock.json`, then run `npm install` again
+### Viewing Notice Details
 
-4. **Type errors**
-   - Run `npm run build` to check for TypeScript errors
-   - Ensure all dependencies are properly installed
+- Click any row in the table
+- Modal dialog opens with complete information:
+  - Award date, publication date
+  - Buyer details and country
+  - CPV codes (with tooltips)
+  - Contract value
+  - Winning supplier
+  - Direct link to original TED notice
 
-## Development
+### Using AI Forecast
+
+1. Navigate to **Forecast** tab
+2. Adjust settings:
+   - **Horizon** - How many months to predict (1-24)
+   - **Fill Missing Months** - Auto-fill gaps in historical data
+   - **Anchor to Today** - Extend timeline to current month
+3. View:
+   - Blue line = Historical actuals
+   - Orange/shaded area = Forecast predictions
+   - Freshness warnings if data is stale (>6 months old)
+
+### Exploring AI Insights
+
+1. Navigate to **AI Insights** tab
+2. View:
+   - **Highlights** - Key findings (spikes, trends, surprises)
+   - **Macro Alignment Cards** - EU-wide context
+   - **Sentiment indicators** - Positive/negative/neutral
+3. Insights update automatically with filters
+
+### Changing Language
+
+1. Click language selector (top right)
+2. Choose: English, Español, or Nederlands
+3. UI and insights translate automatically
+4. Translations are cached for performance
+
+---
+
+## 🐳 Docker Deployment
+
+Full containerized deployment with Docker Compose.
+
+### Quick Deploy
+
+```bash
+# Build and start all services
+docker compose up --build
+
+# Access:
+# - Frontend: http://localhost
+# - Backend: http://localhost:4000
+# - Redis: localhost:6379
+```
+
+### Services
+
+- **frontend** - React app (Nginx, port 80)
+- **backend** - Express API (Node, port 4000)
+- **redis** - Cache (port 6379)
+
+See **[DOCKER.md](./DOCKER.md)** for detailed deployment instructions.
+
+---
+
+## 🛠️ Development
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint (if configured)
+#### Frontend
+
+```bash
+npm run dev        # Start dev server
+npm run build      # Production build
+npm run preview    # Preview production build
+npm run lint       # Run ESLint
+npm run test:e2e   # Run Playwright E2E tests
+```
+
+#### Backend
+
+```bash
+npm run dev        # Start with hot reload
+npm run build      # Compile TypeScript
+npm run start      # Run compiled JS
+npm test           # Run Jest tests
+npm run sample     # Test forecaster CLI
+```
 
 ### Building for Production
 
 ```bash
+# Frontend
+cd front
 npm run build
+# Output: front/dist/
+
+# Backend
+cd backend
+npm run build
+# Output: backend/dist/
 ```
 
-The production-ready files will be in the `dist/` directory. You can deploy this to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
+### Testing
 
-## Contributing
+```bash
+# E2E tests (Playwright)
+cd front
+npm run test:e2e
 
-This is a take-home assignment project, but suggestions for improvements are welcome!
-
-## License
-
-This project is created for educational and demonstration purposes.
-
-## Acknowledgments
-
-- Data source: [Tenders Electronic Daily (TED)](https://ted.europa.eu)
-- UI Components: [Shadcn UI](https://ui.shadcn.com/)
-- Visualization: [Recharts](https://recharts.org/)
+# Unit tests (Jest) - Backend
+cd backend
+npm test
+```
 
 ---
 
-**Built with ❤️ for RGS Healthcare Solutions**
+## 📈 Future Roadmap
+
+### Planned Features
+
+#### Data Management
+- [ ] **CSV/Excel export** of filtered data
+- [ ] **Saved filter presets** with sharing
+- [ ] **Bulk data downloads** for offline analysis
+- [ ] **Scheduled reports** via email
+
+#### Advanced AI
+- [ ] **Enhanced forecasting** with ARIMA/Prophet models
+- [ ] **Price prediction** for specific products
+- [ ] **Supplier win-rate analytics**
+- [ ] **Market sentiment analysis**
+- [ ] **Automated alerts** for anomalies
+
+#### User Experience
+- [ ] **Email notifications** for new matching contracts
+- [ ] **Custom dashboard layouts**
+- [ ] **Dark mode** theme
+- [ ] **Mobile-optimized views**
+- [ ] **Accessibility (WCAG 2.1 AA)**
+
+#### Technical
+- [ ] **GraphQL API** option
+- [ ] **Real-time updates** via WebSockets
+- [ ] **Offline mode** with service workers
+- [ ] **Advanced search** with fuzzy matching
+
+---
+
+## 📚 Additional Documentation
+
+- **[DOCKER.md](./DOCKER.md)** - Docker deployment guide
+- **[API Documentation](./backend/README.md)** - Backend API reference *(coming soon)*
+
+---
+
+## 🤝 Contributing
+
+For questions or suggestions, feel free to reach out!
+
+---
+
+## 📄 License
+
+This project is created for educational and demonstration purposes.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Data Source**: [Tenders Electronic Daily (TED)](https://ted.europa.eu) - European Union public procurement data
+- **UI Framework**: [Shadcn UI](https://ui.shadcn.com/) - Beautiful, accessible React components
+- **Visualizations**: [Recharts](https://recharts.org/) - Composable charting library
+- **AI Framework**: [TensorFlow.js](https://www.tensorflow.org/js) - Machine learning in JavaScript
+
+*Transforming procurement data into actionable intelligence* 🚀
